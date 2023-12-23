@@ -13,6 +13,8 @@ public class DiffFilterMain extends JFrame {
     private JTextArea textArea2;
     private JTextArea textArea3;
     private JButton button;
+    private JButton clearButton; // 新增“清除”按钮
+    private JButton swapButton; // 新增“交换”按钮
 
     public DiffFilterMain() {
         BorderLayout layout = new BorderLayout();
@@ -57,9 +59,32 @@ public class DiffFilterMain extends JFrame {
             }
         });
 
+        clearButton = new JButton("清除"); // 创建“清除”按钮
+        clearButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                textArea1.setText("");
+                textArea2.setText("");
+                textArea3.setText("");
+            }
+        });
+
+        swapButton = new JButton("交换"); // 创建“交换”按钮
+        swapButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String temp = textArea1.getText();
+                textArea1.setText(textArea2.getText());
+                textArea2.setText(temp);
+                textArea3.setText("");
+            }
+        });
+
         JPanel buttonPanel = new JPanel();
         buttonPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // 设置按钮和边界之间的间距
         buttonPanel.add(button);
+        buttonPanel.add(clearButton); // 添加“清除”按钮到按钮面板
+        buttonPanel.add(swapButton); // 添加“交换”按钮到按钮面板
 
         add(topPanel, BorderLayout.CENTER);
         add(buttonPanel, BorderLayout.SOUTH);
