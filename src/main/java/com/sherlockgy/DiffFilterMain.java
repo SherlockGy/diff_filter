@@ -12,9 +12,9 @@ public class DiffFilterMain extends JFrame {
     private JTextArea textArea1;
     private JTextArea textArea2;
     private JTextArea textArea3;
-    private JButton button;
-    private JButton clearButton; // 新增“清除”按钮
-    private JButton swapButton; // 新增“交换”按钮
+    private JButton processButton; // “执行”按钮
+    private JButton clearButton; // “清除”按钮
+    private JButton swapButton; // “交换”按钮
 
     public DiffFilterMain() {
         BorderLayout layout = new BorderLayout();
@@ -22,7 +22,7 @@ public class DiffFilterMain extends JFrame {
         layout.setVgap(10); // 设置垂直间距
         setLayout(layout);
 
-        JPanel topPanel = new JPanel(new GridLayout(1, 3, 10, 10)); // 修改为1行3列的网格
+        JPanel topPanel = new JPanel(new GridLayout(1, 3, 10, 10)); // 1行3列的网格
         topPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // 设置文本框和边界之间的间距
 
         JPanel panel1 = new JPanel(new BorderLayout());
@@ -48,10 +48,10 @@ public class DiffFilterMain extends JFrame {
 
         topPanel.add(panel1);
         topPanel.add(panel2);
-        topPanel.add(panel3); // 修改为添加包含“结果”标签的面板
+        topPanel.add(panel3);
 
-        button = new JButton("执行");
-        button.addActionListener(new ActionListener() {
+        processButton = new JButton("执行");
+        processButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 java.util.List<String> list1 = new ArrayList<>(Arrays.asList(textArea1.getText().split("\\n")));
@@ -71,7 +71,7 @@ public class DiffFilterMain extends JFrame {
             }
         });
 
-        swapButton = new JButton("交换数据1和数据2"); // 创建“交换”按钮
+        swapButton = new JButton("交换数据1和数据2");
         swapButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -84,9 +84,9 @@ public class DiffFilterMain extends JFrame {
 
         JPanel buttonPanel = new JPanel();
         buttonPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // 设置按钮和边界之间的间距
-        buttonPanel.add(button);
-        buttonPanel.add(clearButton); // 添加“清除”按钮到按钮面板
-        buttonPanel.add(swapButton); // 添加“交换”按钮到按钮面板
+        buttonPanel.add(processButton); // 添加“执行”按钮到按钮面板
+        buttonPanel.add(clearButton);   // 添加“清除”按钮到按钮面板
+        buttonPanel.add(swapButton);    // 添加“交换”按钮到按钮面板
 
         add(topPanel, BorderLayout.CENTER);
         add(buttonPanel, BorderLayout.SOUTH);
