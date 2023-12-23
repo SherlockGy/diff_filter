@@ -20,24 +20,33 @@ public class DiffFilterMain extends JFrame {
         layout.setVgap(10); // 设置垂直间距
         setLayout(layout);
 
-        JPanel topPanel = new JPanel(new GridLayout(2, 3, 10, 10)); // 设置文本框之间的间距
+        JPanel topPanel = new JPanel(new GridLayout(1, 3, 10, 10)); // 修改为1行3列的网格
         topPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // 设置文本框和边界之间的间距
 
+        JPanel panel1 = new JPanel(new BorderLayout());
         JLabel label1 = new JLabel("全量数据");
-        JLabel label2 = new JLabel("排除数据");
-        topPanel.add(label1);
-        topPanel.add(label2);
-        topPanel.add(new JLabel()); // 添加一个空标签以保持网格布局的对齐
-
         textArea1 = new JTextArea();
+        panel1.add(label1, BorderLayout.NORTH);
+        panel1.add(new JScrollPane(textArea1), BorderLayout.CENTER);
+
+        JPanel panel2 = new JPanel(new BorderLayout());
+        JLabel label2 = new JLabel("排除数据");
         textArea2 = new JTextArea();
+        panel2.add(label2, BorderLayout.NORTH);
+        panel2.add(new JScrollPane(textArea2), BorderLayout.CENTER);
+
+        JPanel panel3 = new JPanel(new BorderLayout());
+        JLabel label3 = new JLabel("结果"); // 新增“结果”标签
         textArea3 = new JTextArea();
         textArea3.setEditable(false); // 设置第三个文本框为只读
-        topPanel.add(new JScrollPane(textArea1));
-        topPanel.add(new JScrollPane(textArea2));
-        topPanel.add(new JScrollPane(textArea3));
+        panel3.add(label3, BorderLayout.NORTH); // 将“结果”标签添加到第三个文本框上方
+        panel3.add(new JScrollPane(textArea3), BorderLayout.CENTER);
 
-        button = new JButton("Process");
+        topPanel.add(panel1);
+        topPanel.add(panel2);
+        topPanel.add(panel3); // 修改为添加包含“结果”标签的面板
+
+        button = new JButton("执行过滤");
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
