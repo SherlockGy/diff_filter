@@ -40,8 +40,10 @@ public class DiffFilterMain extends JFrame {
         JPanel panel3 = new JPanel(new BorderLayout());
         JLabel label3 = new JLabel("数据1有而数据2没有的：");
         textArea3 = new JTextArea();
-        textArea3.setEditable(false); // 设置第三个文本框为只读
-        panel3.add(label3, BorderLayout.NORTH); // 将“结果”标签添加到第三个文本框上方
+        textArea3.setEditable(false);              // 设置第三个文本框为只读
+        textArea3.setBackground(Color.LIGHT_GRAY); // 设置背景色为浅灰色
+        textArea3.setCaretColor(Color.LIGHT_GRAY); // 设置光标颜色为浅灰色（这样就可以隐藏光标了）
+        panel3.add(label3, BorderLayout.NORTH);
         panel3.add(new JScrollPane(textArea3), BorderLayout.CENTER);
 
         topPanel.add(panel1);
