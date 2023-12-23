@@ -26,19 +26,19 @@ public class DiffFilterMain extends JFrame {
         topPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // 设置文本框和边界之间的间距
 
         JPanel panel1 = new JPanel(new BorderLayout());
-        JLabel label1 = new JLabel("全量数据");
+        JLabel label1 = new JLabel("数据1：");
         textArea1 = new JTextArea();
         panel1.add(label1, BorderLayout.NORTH);
         panel1.add(new JScrollPane(textArea1), BorderLayout.CENTER);
 
         JPanel panel2 = new JPanel(new BorderLayout());
-        JLabel label2 = new JLabel("排除数据");
+        JLabel label2 = new JLabel("数据2：");
         textArea2 = new JTextArea();
         panel2.add(label2, BorderLayout.NORTH);
         panel2.add(new JScrollPane(textArea2), BorderLayout.CENTER);
 
         JPanel panel3 = new JPanel(new BorderLayout());
-        JLabel label3 = new JLabel("结果"); // 新增“结果”标签
+        JLabel label3 = new JLabel("数据1有而数据2没有的：");
         textArea3 = new JTextArea();
         textArea3.setEditable(false); // 设置第三个文本框为只读
         panel3.add(label3, BorderLayout.NORTH); // 将“结果”标签添加到第三个文本框上方
@@ -48,7 +48,7 @@ public class DiffFilterMain extends JFrame {
         topPanel.add(panel2);
         topPanel.add(panel3); // 修改为添加包含“结果”标签的面板
 
-        button = new JButton("执行过滤");
+        button = new JButton("执行");
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -69,7 +69,7 @@ public class DiffFilterMain extends JFrame {
             }
         });
 
-        swapButton = new JButton("交换"); // 创建“交换”按钮
+        swapButton = new JButton("交换数据1和数据2"); // 创建“交换”按钮
         swapButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
